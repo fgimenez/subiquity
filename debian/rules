@@ -26,8 +26,9 @@ override_dh_python3:
 override_dh_installinit:
 	dh_installinit --no-start --name=console-conf@
 	dh_installinit --no-start --name=serial-console-conf@
-	ln -s ../console-conf@.service $(CURDIR)/debian/tmp/lib/systemd/system/getty.target.wants/console-conf@tty1.service
-	ln -s ../serial-console-conf@.service $(CURDIR)/debian/tmp/lib/systemd/system/getty.target.wants/serial-console-conf@tty1.service
+	mkdir -p $(CURDIR)/debian/console-conf/lib/systemd/system/getty.target.wants
+	ln -s ../console-conf@.service $(CURDIR)/debian/console-conf/lib/systemd/system/getty.target.wants/console-conf@tty1.service
+	ln -s ../serial-console-conf@.service $(CURDIR)/debian/console-conf/lib/systemd/system/getty.target.wants/serial-console-conf@tty1.service
 
 override_dh_auto_test:
 	@echo "No tests."

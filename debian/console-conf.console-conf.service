@@ -9,10 +9,10 @@ ConditionPathExists=!/writable/firstboot-complete
 
 [Service]
 Environment=PYTHONPATH=/usr/share/subiquity
-ExecStart=-/sbin/agetty -n --noclear -l /usr/bin/console-conf /dev/tty0 $TERM
+ExecStart=-/sbin/agetty -n --noclear -l /usr/bin/console-conf tty0 $TERM
 Type=oneshot
-Restart=always
-RestartSec=0
+#Restart=always
+#RestartSec=0
 UtmpIdentifier=%I
 TTYPath=/dev/tty0
 TTYReset=yes
@@ -20,7 +20,7 @@ TTYVHangup=yes
 TTYVTDisallocate=yes
 KillMode=process
 IgnoreSIGPIPE=no
-SendsSIGHUP=yes
+SendSIGHUP=yes
 
 #KillMode=process
 #Restart=always
